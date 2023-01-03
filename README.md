@@ -1,3 +1,44 @@
+# App Logic
+
+Components from big to small:
+App.js -> FeedbackList -> FeedbackItem -> Card
+
+1. App.js imports FeedbackData sets it to feedback var w/ useState.
+2. App.js imports FeedbackList comp creating feedback prop in it set to feedback var.
+3. ./FeedbackList catches feedback prop (in app.js) as its comp param.
+4. ./FeedbackList adds .map to feedback param to map through each feedback object to return each unique data object as "item"
+5. ./FeedbackList passes item as prop into Feedback Item element to be imported by FeedbackItem component
+6. ./FeedbackItem catches item as param to return item.rating and item.text divs within Card element
+7. ./Card component catches ({children}) param to return styled div with {children)
+8. ./Card component usese Reverse param to create card varient Reverse
+9. ./FeedbackStats components catches ({feedback}) param from parent App.JS that passed feedback prop set to feedback data into FeedbackStats component
+10. ./FeedbackForm comp creates a component level "text" state for input element with an imported custom Button comp. Both are nested in Card comp.
+11. ./FeedbackForm sets a validation check for text input to activate submit button and control message if requirement is not met.
+12. ./FeedbackForm uses RatingSelector comp to: 1) manage rating state
+13. ./RatingSelector sets up rating inputs and styles with event handler function
+14. ./App.js imported uuid to auto generate unique id's to addFeeedback function (using useState in same function) to add "newFeedback" item to "Feedback" data array list
+15. created pages folder for components that render whole pages.
+16. in pages/AboutPage import Link from react-router-dom for instant (no refresh) loading
+17. added FA icon in app.js w/ Link imoprt to link to AboutPage
+18. added NavLink to app.js to style link w/ global css
+19. BUG: Post component create for adding useParams to route to unique posts but it's not working
+20. BUG: import Navigate in Post to redirect
+21. in Post component using useNavagite to redirect within function
+    Note: currently we've done propdrilling by creating a deleteFeedback function in App.js where data is imported, set to var, and passed into FeedbackList along w/ handleDelete prop. Both are passed as params into FeedbackItem that uses FeedbackItem to loop and render data, as well as call onClick function handleDelete.
+22. context/Feedback.Context.js- created context and provider to pass data through compenent tree w/out having to pass props manually from app.js at every level
+23. in app.js using useContext to pass data via importing FeedbackContext.jsx and wrapping all components (including FeedbackList and FeedbackStats) in FeedbackProvider
+24. moved functions from app.js into FeedbackContext comp. using useContext, namely addFeedback, deleteFeedback, and editFeedback
+25. editFeedback is triggered by onClick in button using FAEdit icon in feedbackItem comp
+26. when onClick (in feedbackItem.jsx) fires {() => editFeedback(item.id)} passed through FeedbakcContext modifies setFeedbackEdit (using useState)
+27. in FeedbackContext comp created feedbackEditContainer to hold state updates. It works with editFeedback func. in same folder to setFeedbackEditContainer
+28. imported feedbackEditContainer into FeedbackForm to update values w/ useEffect
+29. imported feedbackEditContainer into FeedbackSelector to update setSelected (selector UI) w/ useEffect
+30. created updateFeedback function in FeedbackContext and imported it into FeedbackForm as a func in a conditional statement, if feedback id matches feedback item id submitted we update array via setFeedback
+
+packages:
+npm i react-icons //FontAwesome
+https://www.npmjs.com/package/uuid
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
