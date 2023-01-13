@@ -1,0 +1,34 @@
+{
+  "feedback": [
+    {
+      "id": 1,
+      "rating": 5,
+      "text": "db.json file item 1."
+    },
+    {
+      "id": 2,
+      "rating": 5,
+      "text": "from json server db.json file item 2."
+    },
+    {
+      "id": 3,
+      "rating": 5,
+      "text": "from json server db.json file item 3."
+    },
+    {
+      "id": 4,
+      "rating": 5,
+      "text": "from json server db.json file item 3."
+    },
+    {
+      "text": "new itemd to be updated now it has been and... ibe agau",
+      "rating": 4,
+      "id": 5
+    },
+    {
+      "text": "her is another review how awesome this radness",
+      "rating": 2,
+      "id": 6
+    }
+  ]
+}

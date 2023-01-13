@@ -34,10 +34,24 @@ App.js -> FeedbackList -> FeedbackItem -> Card
 28. imported feedbackEditContainer into FeedbackForm to update values w/ useEffect
 29. imported feedbackEditContainer into FeedbackSelector to update setSelected (selector UI) w/ useEffect
 30. created updateFeedback function in FeedbackContext and imported it into FeedbackForm as a func in a conditional statement, if feedback id matches feedback item id submitted we update array via setFeedback
+31. add db.json file for backend NOTE: json-server eliminates need for uuid "npm run server"
+32. added npm concurrently to run front end "npm start" and backend "npm run server" simultaneously using
+33. added isLoading useState in FeedbackContext and imported isLoading into FeedbackList
+34. created Spinner component and brought it into FeedbackList
+35. added Proxy to localhost:5000 for json.db
 
 packages:
 npm i react-icons //FontAwesome
 https://www.npmjs.com/package/uuid
+npm i json-server //json server
+npm i concurrently
+//https://www.npmjs.com/package/concurrently/
+
+<!-- in package.json add script: "server": "json-server --watch db.json --port 5000" /as it defaults to 3000 and react is running on 3000 -->
+
+# CLI
+
+npm run conc -- runs npm start dev and npm run server
 
 # Getting Started with Create React App
 

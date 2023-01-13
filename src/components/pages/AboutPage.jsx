@@ -9,10 +9,9 @@ function AboutPage() {
       <div className="about">
         <h1>About this project</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ut velit
-          vero itaque alias in reprehenderit voluptate libero eveniet! Veritatis
-          voluptates voluptate officia tempora sunt incidunt labore nostrum
-          maxime excepturi!
+          This app uses useContext to propogate date, useState to set state, and
+          useEffect to edit and update state. JSON server REST api's
+          (GET,POST,PUT,DELETE)
         </p>
         <p>
           <Link to="/">Back Home</Link>

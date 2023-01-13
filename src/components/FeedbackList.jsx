@@ -4,19 +4,22 @@ import { useContext } from "react";
 import FeedbackItem from "./FeedbackItem";
 import PropTypes from "prop-types";
 import FeedbackContext from "../context/FeedbackContext";
+import Spinner from "./shared/Spinner";
 
 // if we add feedback as an arg to FeedbackList({ }) then our data is coming in as a prop passed from our FeedbackList element in app.js.
 // But if we remove the arg and use useContext then "feedback" data is coming from FeedbackContext.jsx. NOTE: that when feedback is not coming in as a prop but as Context we no longer need PropTypes.
 
 //since data is no longer passed through app.js but via FeedbackContext, we removed handleDelete prop in app.js and no longer need to pass it in to function FeedbackList({ handleDelete })
 function FeedbackList() {
-  const { feedback } = useContext(FeedbackContext);
+  const { feedback, isLoading } = useContext(FeedbackContext);
 
-  if (!feedback || feedback.length === 0) {
+  if (!isLoading && (!feedback || feedback.length === 0)) {
     return <p>no feedback yet</p>;
   }
 
-  return (
+  return isLoading ? (
+    <Spinner></Spinner>
+  ) : (
     <div className="feedback-list">
       <AnimatePresence>
         {feedback.map((item) => (
