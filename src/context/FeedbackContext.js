@@ -58,6 +58,7 @@ export const FeedbackProvider = ({ children }) => {
   const deleteFeedback = async (id) => {
     if (window.confirm("you sure?")) {
       await fetch(`/feedback/${id}`, { method: "DELETE" });
+
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
@@ -74,17 +75,26 @@ export const FeedbackProvider = ({ children }) => {
   const updateFeedback = async (id, updatedItem) => {
     const response = await fetch(`/feedback/${id}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(updatedItem),
     });
 
-    const data = response.json();
+    const data = await response.json();
 
     console.log(id, updatedItem);
     //changed ...updatedItem to ...data since it's now coming from server
-    setFeedback(
-      feedback.map((item) => (item.id === id ? { ...item, ...data } : item))
-    );
+    setFeedback(feedback.map((item) => (item.id === id ? data : item)));
+
+    setFeedbackEditContainer({
+      item: {},
+      edit: false,
+    });
+
+    // setFeedback(
+    //   feedback.map((item) => (item.id === id ? { ...item, ...data } : item))
+    // );
   };
 
   // any functions for manipulating data or useStates we pass in as value ={{}} prop objects
