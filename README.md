@@ -76,10 +76,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm run build`
 
-To serve it you can use an npm serve package:
-npm i -g serve // then run:
-serve -s build
-
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
